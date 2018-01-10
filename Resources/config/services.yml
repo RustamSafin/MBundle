@@ -1,0 +1,4 @@
+services:
+#    m.example:
+#        class: Rustam\MBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]
