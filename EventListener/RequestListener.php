@@ -25,6 +25,6 @@ class RequestListener
     public function onKernelRequest(GetResponseEvent $event)
     {
 
-        var_dump($this->container->get('router')->getRouteCollection()->all());
+        dump($this->container->get('router')->getRouteCollection()->all());
     }
 }
