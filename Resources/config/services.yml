@@ -2,3 +2,12 @@ services:
 #    m.example:
 #        class: Rustam\MBundle\Example
 #        arguments: ["@service_id", "plain_value", "%parameter%"]
+     Rustam\MBundle\Routing\MLoader:
+            tags: [routing.loader]
+            arguments: ['@service_container']
+
+     Rustam\MBundle\EventListener\RequestListener:
+                 arguments:
+                     ['@service_container']
+                 tags:
+                     - { name: kernel.event_listener, event: kernel.request }

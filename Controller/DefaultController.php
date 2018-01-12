@@ -9,9 +9,9 @@ use Symfony\Component\HttpFoundation\Response;
 
 class DefaultController extends Controller
 {
-    /**
-     * @Route("/entities")
-     */
+//    /**
+//     * @Route("/entities")
+//     */
     public function indexAction()
     {
         $metadata = $this->getDoctrine()->getManager()->getMetadataFactory()->getAllMetadata();
@@ -23,9 +23,9 @@ class DefaultController extends Controller
         return new Response(json_encode($choices));
     }
 
-    /**
-     * @Route("/{entityName}")
-     */
+//    /**
+//     * @Route("/{entityName}/")
+//     */
     public function indexEntity($entityName, Request $request)
     {
         $em = $this->getDoctrine()->getManager();
