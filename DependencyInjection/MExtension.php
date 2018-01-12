@@ -22,6 +22,10 @@ class MExtension extends Extension
         $configuration = new Configuration();
         $config = $this->processConfiguration($configuration, $configs);
 
+        foreach ($container->get('router')->getRouteCollection()->all() as $name => $route) {
+            dump($route->getPath());
+        }
+
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.yml');
     }
