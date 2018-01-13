@@ -17,13 +17,5 @@ services:
             # if you need to do this, you can override this setting on individual services
             public: false
 
-    Rustam\MBundle\Controller\:
-            resource: '/rustam/mbundle/Controller'
-            public: true
-            tags: ['controller.service_arguments']
-    Rustam\MBundle\:
-            resource: '/rustam/mbundle/*'
-            # you can exclude directories or files
-            # but if a service is unused, it's removed anyway
-            exclude: '/rustam/mbundle/{Entity,Repository}'
+
 
