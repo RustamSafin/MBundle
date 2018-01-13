@@ -35,11 +35,11 @@ class RequestListener
         }
 //        $check1 = preg_grep('/^\/('.$this->service->getAllNamesForRequirements().')(\/)?$/',$a);
 
-        $check2 = preg_grep('/^\/\{[a-z]+\}(\/)?$/',$a);
+//        $check2 = preg_grep('/^\/\{[a-z]+\}(\/)?$/',$a);
 
-        if (count($check1)>1||count($check2)>1) {
-            throw RouteCollisionException::routeCollision();
-        }
+//        if (count($check1)>1||count($check2)>1) {
+//            throw RouteCollisionException::routeCollision();
+//        }
 
     }
 }
