@@ -63,7 +63,7 @@ class EntityService
         $repository = $this->entityManager->getRepository($classMeta->getName());
 
 
-        return array_values((array) $repository->find(''.$id);
+        return array_values((array) $repository->find(''.$id));
     }
     public function save($entityName, $content ) {
         $classMeta = $this->getClassMetadata(ucfirst($entityName));
