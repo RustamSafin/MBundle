@@ -34,7 +34,7 @@ class RequestListener
         foreach ($this->container->get('router')->getRouteCollection()->all() as $name => $route) {
             $a[]=$route->getPath();
         }
-        $check1 = preg_grep('/^\/('.$this->service->getAllNamesForRequirements().')(\/|(\/\{[a-z]+\})?$/',$a);
+        $check1 = preg_grep('/^\/('.$this->service->getAllNamesForRequirements().')(\/|(\/\{[a-z]+\}))?$/',$a);
         dump($check1);
         $check2 = preg_grep('/^\/\{[a-z]+\}(\/|(\/\{[a-z]+\}))?$/',$a);
         dump($check2);
