@@ -38,7 +38,7 @@ class DefaultController extends Controller
     {
 
         if ($request->getMethod()==="PUT") {
-           return $this->entityService->update($entityName,$id,json_decode($request->getContent(),true));
+            return $this->entityService->update($entityName,$id,json_decode($request->getContent(),true));
         }
         if ($request->getMethod()==="DELETE"){
             $response = $this->entityService->delete($entityName,$id);
