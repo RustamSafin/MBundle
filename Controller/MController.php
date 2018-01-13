@@ -7,7 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\BrowserKit\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class DefaultController extends Controller
+class MController extends Controller
 {
     private $entityService;
 

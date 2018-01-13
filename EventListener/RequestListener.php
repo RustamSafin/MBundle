@@ -20,10 +20,10 @@ class RequestListener
     private $container;
     private $service;
 
-    public function __construct(ContainerInterface $container)
+    public function __construct(ContainerInterface $container, EntityService $entityService)
     {
         $this->container = $container;
-//        $this->service = $entityService;
+        $this->service = $entityService;
     }
 
     public function onKernelRequest(GetResponseEvent $event)
@@ -33,13 +33,13 @@ class RequestListener
         foreach ($this->container->get('router')->getRouteCollection()->all() as $name => $route) {
             $a[]=$route->getPath();
         }
-//        $check1 = preg_grep('/^\/('.$this->service->getAllNamesForRequirements().')(\/)?$/',$a);
+        $check1 = preg_grep('/^\/('.$this->service->getAllNamesForRequirements().')(\/)?$/',$a);
 
-//        $check2 = preg_grep('/^\/\{[a-z]+\}(\/)?$/',$a);
+        $check2 = preg_grep('/^\/\{[a-z]+\}(\/)?$/',$a);
 
-//        if (count($check1)>1||count($check2)>1) {
-//            throw RouteCollisionException::routeCollision();
-//        }
+        if (count($check1)>1||count($check2)>1) {
+            throw RouteCollisionException::routeCollision();
+        }
 
     }
 }
