@@ -23,6 +23,9 @@ class EntityService
     public function update($entityName, $id, $content)
     {
         $classMeta = $this->getClassMetadata($entityName);
+        if (empty($classMeta)) {
+            return new Response('no such entity');
+        }
         $repository = $this->entityManager->getRepository($classMeta->getName());
         $entity = $repository->find($id);
         $fields = $classMeta->getFieldNames();
@@ -34,11 +37,15 @@ class EntityService
         }
         $this->entityManager->persist($entity);
         $this->entityManager->flush();
+        return new Response("updated");
     }
 
     public function delete($entityName, $id)
     {
         $classMeta = $this->getClassMetadata($entityName);
+        if (empty($classMeta)) {
+            return new Response('no such entity');
+        }
         $repository = $this->entityManager->getRepository($classMeta->getName());
         $entity = $repository->find($id);
         $this->entityManager->remove($entity);
@@ -49,6 +56,9 @@ class EntityService
     public function findById($entityName, $id)
     {
         $classMeta = $this->getClassMetadata($entityName);
+        if (empty($classMeta)) {
+            return new Response('no such entity');
+        }
         $repository = $this->entityManager->getRepository($classMeta->getName());
         return $repository->find($id);
     }
@@ -56,6 +66,9 @@ class EntityService
         $classMeta = $this->getClassMetadata($entityName);
 //        $postData = file_get_contents('php://input');
 //        $data = json_decode($postData, true);
+        if (empty($classMeta)) {
+            return new Response('no such entity');
+        }
         $entity = $classMeta->getName();
         $entity = new $entity();
         $fields = $classMeta->getFieldNames();
@@ -67,10 +80,14 @@ class EntityService
         }
         $this->entityManager->persist($entity);
         $this->entityManager->flush();
+        return new Response('saved');
     }
 
     public function findEntityByName($entityName) {
         $classMeta = $this->getClassMetadata($entityName);
+        if (empty($classMeta)) {
+            return new Response('no such entity');
+        }
         $res = $this->entityManager->getRepository($classMeta->getName())->findAll();
         $a = array();
         $a [$classMeta->getName()] = $classMeta->getFieldNames();
@@ -86,6 +103,15 @@ class EntityService
             $choices[] = $classMeta->getName();
         }
         return $choices;
+    }
+    public function getAllNamesForRequirements() {
+        $metadata = $this->entityManager->getMetadataFactory()->getAllMetadata();
+        $choices = '';
+        foreach ($metadata as $classMeta) {
+            $e = explode('\\',$classMeta->getName());
+            $choices .= strtolower(end($e)).'|';
+        }
+        return substr($choices,0,strlen($choices)-1);
     }
     private function getClassMetadata($entityName) {
         $metadata = $this->entityManager->getMetadataFactory()->getAllMetadata();

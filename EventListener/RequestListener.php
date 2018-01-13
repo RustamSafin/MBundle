@@ -8,6 +8,8 @@
 
 namespace Rustam\MBundle\EventListener;
 
+use Rustam\MBundle\RouteCollisionExcepton;
+use Rustam\MBundle\Service\EntityService;
 use Symfony\Component\DependencyInjection\Container;
 use Symfony\Component\HttpKernel\Event\GetResponseEvent;
 
@@ -16,15 +18,28 @@ class RequestListener
 
 
     private $container;
+    private $service;
 
-    public function __construct(Container $container)
+    public function __construct(Container $container,EntityService $entityService)
     {
         $this->container = $container;
+        $this->service = $entityService;
     }
 
     public function onKernelRequest(GetResponseEvent $event)
     {
 
-        dump($this->container->get('router')->getRouteCollection()->all());
+        $a=array();
+        foreach ($this->container->get('router')->getRouteCollection()->all() as $name => $route) {
+            $a[]=$route->getPath();
+        }
+        $check1 = preg_grep('/^\/('.$this->service->getAllNamesForRequirements().'(\/|(\/\{[a-z]+\})?$/',$a);
+        dump($check1);
+        $check2 = preg_grep('/^\/\{[a-z]+\}(\/|(\/\{[a-z]+\}))?$/',$a);
+        dump($check2);
+        if (count($check1)>1||count($check2)>1) {
+            throw RouteCollisionExcepton::routeCollision();
+        }
+
     }
 }

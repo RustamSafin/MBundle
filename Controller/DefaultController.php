@@ -26,7 +26,7 @@ class DefaultController extends Controller
     public function indexEntity($entityName, Request $request)
     {
         if ($request->getMethod()==='POST') {
-            $this->entityService->save($entityName,json_decode($request->getContent(),true));
+            return $this->entityService->save($entityName,json_decode($request->getContent(),true));
         }
         $response = $this->entityService->findEntityByName($entityName);
         return new Response(json_encode($response));
@@ -38,7 +38,7 @@ class DefaultController extends Controller
     {
 
         if ($request->getMethod()==="PUT") {
-           $this->entityService->update($entityName,$id,json_decode($request->getContent(),true));
+           return $this->entityService->update($entityName,$id,json_decode($request->getContent(),true));
         }
         if ($request->getMethod()==="DELETE"){
             $response = $this->entityService->delete($entityName,$id);
