@@ -18,6 +18,7 @@ services:
 #        autowire: true
 
     Rustam\MBundle\Controller\:
+        class: Rustam\MBundle\Controller\DefaultController
         public: true
         tags: ['controller.service_arguments']
 ##        arguments: ['@entity_service']
