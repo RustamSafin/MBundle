@@ -1,0 +1,3 @@
+app_m:
+    resource: '@MBundle/Controller/'
+    type: m

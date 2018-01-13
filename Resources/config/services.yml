@@ -4,12 +4,10 @@ services:
         tags: [routing.loader]
         arguments: ['@service_container']
 
-    Rustam\Mbundle\Controller\DefaultController:
-#        tags: ['controller.service_arguments']
-#        arguments:
-        autowire: true
-    Rustam\MBundle\Service\EntityService:
-        autowire: true
+#    Rustam\Mbundle\Controller\DefaultController:
+##        tags: ['controller.service_arguments']
+##        arguments:
+#        arguments: Rustam\MBundle\Service\EntityService
     Rustam\MBundle\EventListener\RequestListener:
         tags:
             - { name: kernel.event_listener, event: kernel.request }
