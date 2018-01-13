@@ -11,7 +11,6 @@ namespace Rustam\MBundle\EventListener;
 use Psr\Container\ContainerInterface;
 use Rustam\MBundle\Exception\RouteCollisionException;
 use Rustam\MBundle\Service\EntityService;
-use Symfony\Component\DependencyInjection\Container;
 use Symfony\Component\HttpKernel\Event\GetResponseEvent;
 
 class RequestListener
