@@ -61,6 +61,7 @@ class EntityService
             return new Response('no such entity');
         }
         $repository = $this->entityManager->getRepository($classMeta->getName());
+        dump($repository->find(''.$id));
         return $repository->find(''.$id);
     }
     public function save($entityName, $content ) {
