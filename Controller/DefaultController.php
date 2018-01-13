@@ -47,7 +47,8 @@ class DefaultController extends Controller
         }
 
         $entity = $this->entityService->findById($entityName,$id);
-        return new Response(json_encode($entity,true));
+        dump($entity);
+        return new Response(json_encode($this->entityService->findById($entityName,$id),true));
 
     }
 
