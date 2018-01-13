@@ -28,7 +28,7 @@ class EntityService
             return new Response('no such entity');
         }
         $repository = $this->entityManager->getRepository($classMeta->getName());
-        $entity = $repository->find($id);
+        $entity = $repository->find(''.$id);
         $fields = $classMeta->getFieldNames();
         foreach ($fields as $field) {
             if (array_key_exists($field, $content)) {
@@ -48,7 +48,7 @@ class EntityService
             return new Response('no such entity');
         }
         $repository = $this->entityManager->getRepository($classMeta->getName());
-        $entity = $repository->find($id);
+        $entity = $repository->find(''.$id);
         $this->entityManager->remove($entity);
         $this->entityManager->flush();
         return new Response('deleted');
@@ -61,7 +61,7 @@ class EntityService
             return new Response('no such entity');
         }
         $repository = $this->entityManager->getRepository($classMeta->getName());
-        return $repository->findOneById($id);
+        return $repository->find(''.$id);
     }
     public function save($entityName, $content ) {
         $classMeta = $this->getClassMetadata(ucfirst($entityName));
