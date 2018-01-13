@@ -17,10 +17,12 @@ services:
 #        class: Rustam\MBundle\Service\EntityService
 #        autowire: true
 
-    MBundle\Controller\:
-        resource: 'Rustam\Mbundle\Controller'
+    Rustam\MBundle\Controller\:
+        resource: '../../Controller'
         public: true
         tags: ['controller.service_arguments']
+        autoconfigure: true
+        autowire: true
 ##        arguments: ['@entity_service']
 
     Rustam\MBundle\EventListener\RequestListener:
