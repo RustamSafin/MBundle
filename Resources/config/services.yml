@@ -8,6 +8,15 @@ services:
         tags:
             - { name: kernel.event_listener, event: kernel.request }
 
+    Rustam\MBundle\Controller\:
+            resource: '../../rustam/mbundle/Controller/'
+            public: true
+            tags: ['controller.service_arguments']
+    Rustam\MBundle\:
+            resource: '../../rustam/mbundle/*'
+            # you can exclude directories or files
+            # but if a service is unused, it's removed anyway
+            exclude: '../../rustam/mbundle/{Entity,Repository}'
     _defaults:
             # automatically injects dependencies in your services
             autowire: true
