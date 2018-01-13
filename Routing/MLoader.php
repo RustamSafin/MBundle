@@ -40,8 +40,8 @@ class MLoader extends Loader
         $routes = new RouteCollection();
 
         // prepare a new route
-        $path1 = '/{entities}/';
-        $path2 = '/{entities}/{id}';
+        $path1 = '/{entityName}/';
+        $path2 = '/{entityName}/{id}';
         $defaults1 = array(
             '_controller' => 'Rustam\MBundle\Controller\DefaultController::indexEntity',
         );
@@ -52,11 +52,11 @@ class MLoader extends Loader
 //            'parameter' => '\d+',
 //        );
         $requirements1 = array(
-            'entities' => $this->service->getAllNamesForRequirements(),
+            'entityName' => $this->service->getAllNamesForRequirements(),
         );
         $requirements2 = array(
             'id' => '\d+',
-            'entities' => $this->service->getAllNamesForRequirements(),
+            'entityName' => $this->service->getAllNamesForRequirements(),
         );
         $route1 = new Route($path1, $defaults1,$requirements1);
         $route2 = new Route($path2, $defaults2,$requirements2);
