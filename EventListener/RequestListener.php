@@ -9,7 +9,7 @@
 namespace Rustam\MBundle\EventListener;
 
 use Psr\Container\ContainerInterface;
-use Rustam\MBundle\RouteCollisionExcepton;
+use Rustam\MBundle\Exception\RouteCollisionException;
 use Rustam\MBundle\Service\EntityService;
 use Symfony\Component\DependencyInjection\Container;
 use Symfony\Component\HttpKernel\Event\GetResponseEvent;
@@ -39,7 +39,7 @@ class RequestListener
         $check2 = preg_grep('/^\/\{[a-z]+\}(\/|(\/\{[a-z]+\}))?$/',$a);
         dump($check2);
         if (count($check1)>1||count($check2)>1) {
-            throw RouteCollisionExcepton::routeCollision();
+            throw RouteCollisionException::routeCollision();
         }
 
     }

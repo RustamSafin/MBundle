@@ -6,12 +6,12 @@
  * Time: 18:59
  */
 
-namespace Rustam\MBundle;
+namespace Rustam\MBundle\Exception;
 
 
 
 
-class RouteCollisionExcepton extends \Exception
+class RouteCollisionException extends \Exception
 {
     public static function routeCollision(){
         return new self('Multiple Routes have matched to this request. See route definitions');
