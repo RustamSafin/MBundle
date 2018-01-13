@@ -9,11 +9,6 @@ services:
                 # if you need to do this, you can override this setting on individual services
             public: false
 
-    Rustam\MBundle\Controller:
-              resource: '../../Controller'
-              public: true
-              tags: ['controller.service_arguments']
-
     Rustam\MBundle\Routing\MLoader:
         tags: [routing.loader]
         arguments: ['@service_container']
@@ -24,3 +19,7 @@ services:
             - { name: kernel.event_listener, event: kernel.request }
 
 
+    Rustam\MBundle\Controller\:
+        resource: '../../Controller'
+        public: true
+        tags: ['controller.service_arguments']
