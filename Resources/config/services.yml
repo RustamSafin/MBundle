@@ -1,4 +1,7 @@
 services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
 #    m.example:
 #        class: Rustam\MBundle\Example
 #        arguments: ["@service_id", "plain_value", "%parameter%"]
