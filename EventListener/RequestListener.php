@@ -8,6 +8,7 @@
 
 namespace Rustam\MBundle\EventListener;
 
+use Psr\Container\ContainerInterface;
 use Rustam\MBundle\RouteCollisionExcepton;
 use Rustam\MBundle\Service\EntityService;
 use Symfony\Component\DependencyInjection\Container;
@@ -20,7 +21,7 @@ class RequestListener
     private $container;
     private $service;
 
-    public function __construct(Container $container,EntityService $entityService)
+    public function __construct(ContainerInterface $container,EntityService $entityService)
     {
         $this->container = $container;
         $this->service = $entityService;
