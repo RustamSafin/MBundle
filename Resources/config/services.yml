@@ -18,7 +18,7 @@ services:
 #        autowire: true
 
     MBundle\Controller\:
-        resource: '/../Controller'
+        resource: '@Mbundle\Controller'
         public: true
         tags: ['controller.service_arguments']
 ##        arguments: ['@entity_service']
