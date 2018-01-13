@@ -1,18 +1,21 @@
 services:
     # default configuration for services in *this* file
+    _defaults:
+                # automatically injects dependencies in your services
+            autowire: true
+            # automatically registers your services as commands, event subscribers, etc.
+            autoconfigure: true
+                # this means you cannot fetch services directly from the container via $container->get()
+                # if you need to do this, you can override this setting on individual services
+            public: false
+
     Rustam\MBundle\Routing\MLoader:
         tags: [routing.loader]
         arguments: ['@service_container']
 
-#    Rustam\Mbundle\Controller\DefaultController:
-##        tags: ['controller.service_arguments']
-##        arguments:
-#        arguments: Rustam\MBundle\Service\EntityService
-
-
-    entity_service:
-        class: Rustam\MBundle\Service\EntityService
-        autowire: true
+#    entity_service:
+#        class: Rustam\MBundle\Service\EntityService
+#        autowire: true
 
     Rustam\MBundle\Controller\DefaultController:
         autowire: true
@@ -23,14 +26,5 @@ services:
     Rustam\MBundle\EventListener\RequestListener:
         tags:
             - { name: kernel.event_listener, event: kernel.request }
-    _defaults:
-            # automatically injects dependencies in your services
-        autowire: true
-        # automatically registers your services as commands, event subscribers, etc.
-        autoconfigure: true
-            # this means you cannot fetch services directly from the container via $container->get()
-            # if you need to do this, you can override this setting on individual services
-        public: false
-
 
 
