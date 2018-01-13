@@ -23,7 +23,7 @@ class EntityService
 
     public function update($entityName, $id, $content)
     {
-        $classMeta = $this->getClassMetadata($entityName);
+        $classMeta = $this->getClassMetadata(ucfirst($entityName));
         if (empty($classMeta)) {
             return new Response('no such entity');
         }
@@ -43,7 +43,7 @@ class EntityService
 
     public function delete($entityName, $id)
     {
-        $classMeta = $this->getClassMetadata($entityName);
+        $classMeta = $this->getClassMetadata(ucfirst($entityName));
         if (empty($classMeta)) {
             return new Response('no such entity');
         }
@@ -56,7 +56,7 @@ class EntityService
 
     public function findById($entityName, $id)
     {
-        $classMeta = $this->getClassMetadata($entityName);
+        $classMeta = $this->getClassMetadata(ucfirst($entityName));
         if (empty($classMeta)) {
             return new Response('no such entity');
         }
@@ -64,7 +64,7 @@ class EntityService
         return $repository->find($id);
     }
     public function save($entityName, $content ) {
-        $classMeta = $this->getClassMetadata($entityName);
+        $classMeta = $this->getClassMetadata(ucfirst($entityName));
 //        $postData = file_get_contents('php://input');
 //        $data = json_decode($postData, true);
         if (empty($classMeta)) {
@@ -85,7 +85,7 @@ class EntityService
     }
 
     public function findEntityByName($entityName) {
-        $classMeta = $this->getClassMetadata($entityName);
+        $classMeta = $this->getClassMetadata(ucfirst($entityName));
         if (empty($classMeta)) {
             return new Response('no such entity');
         }
