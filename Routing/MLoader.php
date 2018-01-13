@@ -9,11 +9,12 @@
 namespace Rustam\MBundle\Routing;
 
 
-use Rustam\MBundle\Service\EntityService;
+
 use Symfony\Component\Config\Loader\Loader;
 use Symfony\Component\DependencyInjection\Container;
 use Symfony\Component\Routing\Route;
 use Symfony\Component\Routing\RouteCollection;
+use Rustam\MBundle\Service\EntityService;
 
 class MLoader extends Loader
 {
