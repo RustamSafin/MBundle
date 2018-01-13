@@ -15,7 +15,10 @@ services:
         autowire: true
 
     Rustam\MBundle\Controller\DefaultController:
-        arguments: ['@entity_service']
+        autowire: true
+        autoconfigure: true
+        public: false
+#        arguments: ['@entity_service']
 
     Rustam\MBundle\EventListener\RequestListener:
         tags:
