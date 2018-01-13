@@ -13,17 +13,6 @@ services:
         tags: [routing.loader]
         arguments: ['@service_container']
 
-#    entity_service:
-#        class: Rustam\MBundle\Service\EntityService
-#        autowire: true
-#    Rustam\MBundle\Service\:
-#        resource: '../../Service/'
-#    Rustam\MBundle\Controller\:
-#        resource: '../../Controller'
-#        public: true
-#        tags: ['controller.service_arguments']
-
-##        arguments: ['@entity_service']
 
     Rustam\MBundle\EventListener\RequestListener:
         tags:
