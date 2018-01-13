@@ -8,6 +8,15 @@ services:
 ##        tags: ['controller.service_arguments']
 ##        arguments:
 #        arguments: Rustam\MBundle\Service\EntityService
+
+
+    entity_service:
+        class: Rustam\MBundle\Service\EntityService
+        autowire: true
+
+    Rustam\MBundle\Controller\DefaultController:
+        arguments: ['@entity_service']
+
     Rustam\MBundle\EventListener\RequestListener:
         tags:
             - { name: kernel.event_listener, event: kernel.request }
