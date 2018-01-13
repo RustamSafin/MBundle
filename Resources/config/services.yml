@@ -21,8 +21,9 @@ services:
         resource: '../../Controller'
         public: true
         tags: ['controller.service_arguments']
-        autoconfigure: true
-        autowire: true
+    Rustam\MBundle\:
+        resource: '../../*'
+        exclude: '../../{Entity,Repository}'
 ##        arguments: ['@entity_service']
 
     Rustam\MBundle\EventListener\RequestListener:
