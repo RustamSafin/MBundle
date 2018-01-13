@@ -2,7 +2,6 @@
 
 namespace Rustam\MBundle\Controller;
 
-
 use Rustam\MBundle\Service\EntityService;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\BrowserKit\Request;
