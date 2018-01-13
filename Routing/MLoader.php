@@ -83,6 +83,6 @@ class MLoader extends Loader
      */
     public function supports($resource, $type = null)
     {
-        return 'm' === $type;
+        return 'm' == $type;
     }
 }
