@@ -34,9 +34,9 @@ class RequestListener
             $a[]=$route->getPath();
 
         }
-        dump($a);
+//        dump($a);
         $check1 = preg_grep('/^\/('.$this->service->getAllNamesForRequirements().')(\/)?$/',$a);
-        dump($check1);
+//        dump($check1);
         $check2 = preg_grep('/^\/\{[a-z]+\}(\/)?$/',$a);
         if (count($check1)>0||count($check2)>1) {
             throw RouteCollisionException::routeCollision();
